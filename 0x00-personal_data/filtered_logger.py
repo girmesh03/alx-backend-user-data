@@ -20,4 +20,5 @@ import re
 
 def filter_datum(fields, redaction, message, separator) -> str:
     """Returns the log message obfuscated."""
-    return re.sub(r'(?<={})'.format(separator.join(fields)), redaction, message)
+    return re.sub(r'(?<={})'.format(
+        separator.join(fields)), redaction, message)
