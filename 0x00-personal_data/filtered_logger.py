@@ -18,6 +18,6 @@ re.sub to perform the substitution with a single regex.
 import re
 
 
-def filter_datum(fields, redaction, message):
+def filter_datum(fields, redaction, message, separator):
     """Returns the log message obfuscated."""
-    return re.sub(r'(?<={})'.format('|'.join(fields)), redaction, message)
+    return re.sub(r'(?<={})'.format(separator.join(fields)), redaction, message)
