@@ -45,7 +45,7 @@ class DB:
             return None
 
         user = User(email=email, hashed_password=hashed_password)
-        session = self._session
+        session = self.__session
         session.add(user)
         session.commit()
         return user
