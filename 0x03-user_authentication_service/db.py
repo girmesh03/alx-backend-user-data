@@ -40,7 +40,11 @@ class DB:
         Returns:
             User: The created User object.
         """
+        if not email or not hashed_password:
+            return None
+
         user = User(email=email, hashed_password=hashed_password)
-        self._session.add(user)
-        self._session.commit()
+        session = self._session
+        session.add(user)
+        session.commit()
         return user
