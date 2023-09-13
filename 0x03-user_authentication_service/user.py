@@ -19,8 +19,8 @@ class User(Base):
     session_id = Column(String(250), nullable=True)
     reset_token = Column(String(250), nullable=True)
 
-if __name__ == "__main__":
-    print(User.__tablename__)
-
-    for column in User.__table__.columns:
-        print("{}: {}".format(column, column.type))
+    def __repr__(self) -> str:
+        """
+        String representation of the User instance.
+        """
+        return f"User: id={self.id}"
