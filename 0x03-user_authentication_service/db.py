@@ -5,10 +5,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
-from user import User
 
-from user import Base
-
+from user import Base, User
 
 class DB:
     """DB class
@@ -35,15 +33,12 @@ class DB:
         """Add a new user to the database.
 
         Args:
-            email (str): The user's email.
-            hashed_password (str): The hashed password.
+            email (str): User's email.
+            hashed_password (str): User's hashed password.
 
         Returns:
-            User: The created User object.
+            User: The User object added to the database.
         """
-        if not email or not hashed_password:
-            return None
-
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit()
