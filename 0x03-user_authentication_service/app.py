@@ -2,7 +2,8 @@
 """ Main file """
 
 from auth import Auth
-from flask import Flask, jsonify, request, abort, redirect
+from flask import Flask, jsonify, request, abort, \
+    redirect, make_response
 
 AUTH = Auth()
 app = Flask(__name__)
@@ -48,7 +49,7 @@ def logout() -> str:
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        return redirect('/'), 302
+        return make_response(redirect('/'))
     else:
         abort(403)
 
